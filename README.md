@@ -5,8 +5,8 @@
     align="center"
 >
     <img 
-        height="122"
-        width="105"
+            height="70%"
+        width="70%"
     src="https://nodejs.org/static/images/logo.svg"/>
 </div>
 
