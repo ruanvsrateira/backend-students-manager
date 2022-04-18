@@ -1,17 +1,16 @@
 import prismaClient from "../database/PrismaClient";
 
+import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+
 const main = async(name:string, email:string, cpf:string, age:number) => {
-    const exists = await prismaClient.student.findUnique({
-        where: { email }
-    });
+    
+    const exists:any = await prismaStudentsRespository.existsByEmail(email);
 
     if(exists) {
-        return { error: "email already used by another student" }
-    } 
-    
-    const student_created = await prismaClient.student.create({
-        data: { name, email, cpf, age }
-    });
+        return { error: "there is already a student with this email" };
+    }
+
+    const student_created = await prismaStudentsRespository.store(name, email, cpf, age);
 
     return student_created;
 };

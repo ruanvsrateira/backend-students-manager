@@ -1,19 +1,14 @@
 import prismaClient from "../database/PrismaClient";
+import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
 
 const main = async(id:number) => {
-    const exists = await prismaClient.student.findUnique({
-        where: { id }
-    });
+    const exists = await prismaStudentsRespository.existsById(id);
 
     if(!exists) {
-        return { error: "user not exists" }
+        return { error: "no student with this id was found" }
     }
 
-    const student_deleted = await prismaClient.student.delete({
-        where: {
-            id
-        }
-    });
+    const student_deleted = await prismaStudentsRespository.delete(id)
 
     return student_deleted;
 };

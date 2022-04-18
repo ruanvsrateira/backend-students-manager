@@ -1,7 +1,7 @@
-import prismaClient from "../database/PrismaClient";
+import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
 
 const main = async() => {
-    const students = await prismaClient.student.findMany();
+    const students = await prismaStudentsRespository.index();
 
     return students;
 };
