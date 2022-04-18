@@ -62,6 +62,11 @@
     # ou
     yarn run migration
     
+    # rodar testes
+    npm run test
+    # ou 
+    yarn run test
+
     # Rodar api
     npm run dev
     # ou
