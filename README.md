@@ -1,5 +1,16 @@
 <h1>backend stundents manager</h1>
 <br>
+
+<div
+    align="center"
+>
+    <img 
+        height="122"
+        width="105"
+    src="https://nodejs.org/static/images/logo.svg"/>
+</div>
+
+
 <h2><img style="height: 25px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png" />  Sobre o projeto</h2>
 <p>Desafio imposto a mim por <a href="https://github.com/kaiqueCovo" target="__blank">Kaique Covo</a> que consiste no backend e frontend de uma C.R.U.D de alunos, usando typescript tanto no backend e no frontend.</p>
 
