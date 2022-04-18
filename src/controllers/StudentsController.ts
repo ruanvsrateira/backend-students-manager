@@ -8,10 +8,13 @@ import reloadCacheService from '../services/reloadCacheService';
 
 import { getRedis, setRedis } from '../config/redisConfig';
 
+import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+
 class StudentController{
 
     async index(req:Request, res:Response) {
         const students = await getAllStudentsService();
+
         const cached = await getRedis("students")
 
         if (cached) {
