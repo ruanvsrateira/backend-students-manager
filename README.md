@@ -43,8 +43,8 @@
     # Iniciar Container com banco de dados
     docker-compose up -d
     
-    # Criar tabelas no banco de dados
-    npm run prisma
+    # Criar estrutura do banco de dados
+    npm run migration
     
     # Rodar api
     npm run dev
