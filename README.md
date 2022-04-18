@@ -10,23 +10,18 @@
 <br />
 
 <h2><img style="height: 25px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" /> Técnologias usadas no projeto</h2>
-<p>
-    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
-    <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
-    <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" />
-    <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" />
-    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
-    <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" />
-    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
-</p>
+
+<li><a href="https://nodejs.org/en/">Node.js</a></li>
+<li><a href="https://expressjs.com/">Express</a></li>
+<li><a href="https://www.prisma.io/">Prisma</a></li>
+<li><a href="https://www.docker.com/">Docker</a></li>
+<li><a href="https://www.postgresql.org/">PostegreSQL</a></li>
+<li><a href="https://redis.io/">Redis</a></li>
+<li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+<li><a href="https://jestjs.io/">Jest</a></li>
 
 <br>
 
-<li><strong>Docker</strong> foi usado para armazenar o banco de dados <strong>postgreSQL</strong> e o <strong>Redis</strong></li>
-<li><strong>Prisma</strong> foi usado com ORM para dar instruções para o banco de dados</li>
-<li><strong>Redis</strong> foi usado guardar informações no cache</li>
-
-<br>
 <h2><img style="height: 25px" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" />  Pré-requisitos: </h2>
 <li><a href="https://git-scm.com/">Git</a></li>
 <li><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></li>
