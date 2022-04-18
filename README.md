@@ -30,6 +30,7 @@
 <li><a href="https://redis.io/">Redis</a></li>
 <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
 <li><a href="https://jestjs.io/">Jest</a></li>
+<li><a href="https://www.npmjs.com/package/supertest">SuperTest</a></li>
 
 <br>
 
@@ -50,15 +51,21 @@
 
     # Instalação de dependencias
     npm i 
+    # ou
+    yarn i 
 
     # Iniciar Container com banco de dados
     docker-compose up -d
     
     # Criar estrutura do banco de dados
     npm run migration
+    # ou
+    yarn run migration
     
     # Rodar api
     npm run dev
+    # ou
+    yarn run dev
 ```
 <hr>
 
