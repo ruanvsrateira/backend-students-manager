@@ -5,7 +5,9 @@ const main = async(id:number, name:string, email:string, cpf:string, age:number)
     const existsEmail = await prismaStudentsRespository.existsByEmail(email);
 
     if(existsEmail) {
-        return { error: "email already used by another student" }
+        const error = { error: "email already used by another student" }
+
+        return error;
     };
 
     const existsId = await prismaStudentsRespository.existsById(id);

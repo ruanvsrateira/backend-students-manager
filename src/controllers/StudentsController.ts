@@ -9,6 +9,7 @@ import reloadCacheService from '../services/reloadCacheService';
 import { getRedis, setRedis } from '../config/redisConfig';
 
 import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+import { Student } from "@prisma/client";
 
 class StudentController{
 
@@ -29,8 +30,10 @@ class StudentController{
     async store(req:Request, res:Response) {
         const {name, email, age, cpf} = req.body;
 
-        const student_created: any = await createNewStudentService(name, email, cpf, Number(age));
-        
+        type StudentCreated = Student | object 
+
+        const student_created: StudentCreated  = await createNewStudentService(name, email, cpf, Number(age));
+
         if(student_created.error) {
             return res.json({ error: `${student_created.error}`})
         }
@@ -41,9 +44,11 @@ class StudentController{
     };
 
     async destroy(req:Request, res:Response) {
+        type StudentDeleted = Student | Object
+        
         const { id }  = req.params;
+        const student_deleted: StudentDeleted = await deleteStudentService(Number(id));
 
-        const student_deleted: any = await deleteStudentService(Number(id));
 
         if(student_deleted.error) {
             return res.json({ error: `${student_deleted.error}` })
@@ -55,10 +60,12 @@ class StudentController{
     };
 
     async edit(req:Request, res:Response) {
-        const { id } = req.params;
-        const { name, email, cpf, age } = req.body;
+        type StudentEdited = Student | Object
 
-        const student_edited: any = await editStudentService(Number(id), name, email, cpf, Number(age));
+        const { id } = req.params;
+        const { name, email, cpf, age } = req.body; 
+
+        const student_edited: StudentEdited = await editStudentService(Number(id), name, email, cpf, Number(age));
         
         if(student_edited.error) {
             return res.json({ error: `${student_edited.error}` })
