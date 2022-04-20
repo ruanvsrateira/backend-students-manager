@@ -7,7 +7,7 @@
     "test": "jest --forceExit",
     "initjest": "jest --init",
     "prismainit": "prisma init",
-    "migration": "prisma migrate dev",
+    "migration": "prisma migrate dev --name create-table-users",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "keywords": [],
