@@ -14,10 +14,6 @@
 <h2><img style="height: 25px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png" />  Sobre o projeto</h2>
 <p>Desafio imposto a mim por <a href="https://github.com/kaiqueCovo" target="__blank">Kaique Covo</a> que consiste no backend e frontend de uma C.R.U.D de alunos, usando typescript tanto no backend e no frontend.</p>
 
-<br>
-
-<h3>⚠️ O projeto ainda não está em sua versão final, esta em fase de desenvolvimento ⚠️</h3>
-
 <br />
 
 <h2><img style="height: 25px" src="https://github.githubassets.com/images/icons/emoji/unicode/1f680.png" /> Técnologias usadas no projeto</h2>
