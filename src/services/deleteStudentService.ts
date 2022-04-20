@@ -1,11 +1,11 @@
 import prismaClient from "../database/PrismaClient";
 import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
 
-const main = async(id:number) => {
+const main = async(id: number) => {
     const exists = await prismaStudentsRespository.existsById(id);
 
     if(!exists) {
-        return { error: "no student with this id was found" }
+        throw new Error("no student with this id was found");
     }
 
     const student_deleted = await prismaStudentsRespository.delete(id)

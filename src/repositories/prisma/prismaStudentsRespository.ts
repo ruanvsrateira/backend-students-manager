@@ -8,7 +8,7 @@ class prismaStudentsRepository{
         return students; 
     };
 
-    async existsById(id:number): Promise<Student|null>{
+    async existsById(id: number): Promise<Student|null>{
         const exists = await prismaClient.student.findUnique({
             where: { id }
         });
@@ -16,7 +16,7 @@ class prismaStudentsRepository{
         return exists;
     };
 
-    async existsByEmail(email:string): Promise<Student|null>{
+    async existsByEmail(email: string): Promise<Student|null>{
         const exists = await prismaClient.student.findUnique({
             where: { email }
         });
@@ -27,12 +27,7 @@ class prismaStudentsRepository{
     async store(name: string, email: string, cpf: string, age: number): Promise<Student>{
         
         const student_created = await prismaClient.student.create({
-            data: {
-                name: name,
-                email: email,
-                cpf: cpf,
-                age: age
-            }
+            data: { name, email, cpf, age }
         });
 
         return student_created;
@@ -46,10 +41,10 @@ class prismaStudentsRepository{
         return student_deleted;
     };
 
-    async edit(id: number, name: string,  email: string, age: number, cpf: string): Promise<Student> {
+    async edit(id: number, name: string, email: string, cpf: string, age: number): Promise<Student> {
         const student_edited = await prismaClient.student.update({
             where: { id },
-            data: { name, email, age, cpf }
+            data: { name, email, cpf, age }
         });  
 
         return student_edited;

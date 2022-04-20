@@ -3,20 +3,17 @@ import prismaStudentsRespository from "../repositories/prisma/prismaStudentsResp
 
 const main = async(id:number, name:string, email:string, cpf:string, age:number) => {
     const existsEmail = await prismaStudentsRespository.existsByEmail(email);
-
-    if(existsEmail) {
-        const error = { error: "email already used by another student" }
-
-        return error;
-    };
-
     const existsId = await prismaStudentsRespository.existsById(id);
 
+    if(existsEmail) {
+        throw new Error("email already used by another student");
+    };
+
     if(!existsId) {
-        return { error: "this id not exist" };
+        throw new Error("this id not exist")
     }
     
-    const student_edited = prismaStudentsRespository.edit(id, name, email, age, cpf);
+    const student_edited = prismaStudentsRespository.edit(id, name, email, cpf, age);
 
     return student_edited;
 };
