@@ -5,6 +5,9 @@
 import app from '../src/app';
 import request from "supertest";
 
+import getAllStudentsService from '../src/services/getAllStudentsService';
+
+
 describe("Create Student Controller", () => {
   it("Should be able to create a new student", async () => {
     const response = await request(app).post("/students").send({
@@ -96,4 +99,10 @@ describe("Edit Student Service", () => {
     expect(typeof response.body).toBe("object");
     expect(response.body.error).toEqual("email already used by another student");
   });
+
+  it("Delete test3", async() => {
+    const response = await request(app).get("/students/2/delete")
+  })
 });
+
+

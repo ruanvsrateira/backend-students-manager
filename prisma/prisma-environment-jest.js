@@ -35,6 +35,7 @@ class CustomEnvironment extends NodeEnvironment {
         await client.connect();
         await client.query(`DROP SCHEMA IF EXISTS "${this.schema}" CASCADE`);
         await client.end();
+            
       }
 }
 
