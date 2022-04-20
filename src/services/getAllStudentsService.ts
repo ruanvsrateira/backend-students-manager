@@ -1,6 +1,7 @@
-import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+import { Student } from "@prisma/client";
+import prismaStudentsRespository from "../repositories/prisma/studentsRepository";
 
-const main = async() => {
+const main = async(): Promise<Student[]> => {
     const students = await prismaStudentsRespository.index();
 
     return students;

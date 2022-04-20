@@ -16,7 +16,6 @@ class CustomEnvironment extends NodeEnvironment {
         super(config);
         this.schema = `teste-${uuid()}`
         this.connectionString = `${process.env.DATABASE_URL}${this.schema}`
-        console.log(this.connectionString)
     };
 
     setup()  {
@@ -39,4 +38,4 @@ class CustomEnvironment extends NodeEnvironment {
       }
 }
 
-module.exports =  CustomEnvironment;
+module.exports = CustomEnvironment;

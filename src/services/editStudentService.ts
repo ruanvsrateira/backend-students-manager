@@ -1,9 +1,12 @@
-import prismaClient from "../database/PrismaClient";
-import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+import { User } from "../entities/User";
 
-const main = async(id:number, name:string, email:string, cpf:string, age:number) => {
-    const existsEmail = await prismaStudentsRespository.existsByEmail(email);
-    const existsId = await prismaStudentsRespository.existsById(id);
+import prismaStudentsRespository from "../repositories/prisma/studentsRepository";
+
+import { IStudent } from "./interfaces/student";
+
+const main = async(data: IStudent): Promise<User>=> {
+    const existsEmail = await prismaStudentsRespository.existsByEmail(data.email);
+    const existsId = await prismaStudentsRespository.existsById(Number(data.id));
 
     if(existsEmail) {
         throw new Error("email already used by another student");
@@ -13,7 +16,9 @@ const main = async(id:number, name:string, email:string, cpf:string, age:number)
         throw new Error("this id not exist")
     }
     
-    const student_edited = prismaStudentsRespository.edit(id, name, email, cpf, age);
+    const user = new User(data)
+
+    const student_edited = prismaStudentsRespository.edit(user);
 
     return student_edited;
 };

@@ -10,7 +10,6 @@ import reloadCacheService from '../services/reloadCacheService';
 // getRedis e setRedis com promise
 import { getRedis, setRedis } from '../config/redisConfig';
 
-
 class StudentController {
 
     async index(req:Request, res:Response): Promise<Response>{
@@ -36,28 +35,27 @@ class StudentController {
         const {name, email, age, cpf} = req.body;
 
         try {
-            const student_created = await createNewStudentService(name, email, cpf, age);
+            
+            const student_created = await createNewStudentService({
+                name, email, age, cpf
+            });
 
             await reloadCacheService();
 
-            return res.json({ student_created });
-        }
+            return res.json({ student_created });   
 
-        catch(err) {
+        } catch(err) {
 
-            if(err == "Error: there is already a student with this email") {
-
-                return res.json({ error: "there is already a student with this email" })
-
+            if(err == "Error: This email is already being used by another student") {
+                return res.json({ error: "This email is already being used by another student" })
             } else {
+                return res.json({ error: "fatal error" })
+            }
 
-                return res.json({ error: "Fatal error"});
-
-            } 
-        };      
+        }
     };
 
-    async destroy(req:Request, res:Response): Promise<Response> {
+    async destroy(req:Request, res:Response): Promise<Response>{
         const { id }  = req.params;
 
         try {
@@ -86,7 +84,10 @@ class StudentController {
         const { name, email, cpf, age } = req.body; 
 
         try {
-            const student_edited = await editStudentService(Number(id), name, email, cpf, Number(age));
+            const student_edited = await editStudentService({
+                id: Number(id),
+                name, email, cpf, age
+            });
             
             await reloadCacheService();
 

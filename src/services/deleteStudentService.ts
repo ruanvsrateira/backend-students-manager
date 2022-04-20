@@ -1,7 +1,7 @@
-import prismaClient from "../database/PrismaClient";
-import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+import { User } from "../entities/User";
+import prismaStudentsRespository from "../repositories/prisma/studentsRepository";
 
-const main = async(id: number) => {
+const main = async(id: number): Promise<User> => {
     const exists = await prismaStudentsRespository.existsById(id);
 
     if(!exists) {

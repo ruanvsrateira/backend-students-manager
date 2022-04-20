@@ -1,7 +1,10 @@
 import { Student } from "@prisma/client";
-import prismaClient from "../../database/PrismaClient"
+import prismaClient from "../../database/PrismaClient";
 
-class prismaStudentsRepository{
+import { User } from "../../entities/User";
+import { IStudentRepository } from "./IStudentRepository";
+
+class prismaStudentsRepository implements IStudentRepository{
     async index(): Promise<Student[]>{
         const students = await prismaClient.student.findMany();
         
@@ -24,10 +27,15 @@ class prismaStudentsRepository{
         return exists;
     };
 
-    async store(name: string, email: string, cpf: string, age: number): Promise<Student>{
+    async store(user: User): Promise<Student>{
         
         const student_created = await prismaClient.student.create({
-            data: { name, email, cpf, age }
+            data: {
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf,
+                age: user.age
+            }
         });
 
         return student_created;
@@ -41,10 +49,15 @@ class prismaStudentsRepository{
         return student_deleted;
     };
 
-    async edit(id: number, name: string, email: string, cpf: string, age: number): Promise<Student> {
+    async edit(user: User): Promise<Student> {
         const student_edited = await prismaClient.student.update({
-            where: { id },
-            data: { name, email, cpf, age }
+            where: { id: user.id },
+            data: {
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf,
+                age: user.age
+            }
         });  
 
         return student_edited;

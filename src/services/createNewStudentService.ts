@@ -1,19 +1,20 @@
-import { Student } from "@prisma/client";
+import prismaStudentsRespository from "../repositories/prisma/studentsRepository";
 
-import prismaStudentsRespository from "../repositories/prisma/prismaStudentsRespository";
+import { User } from "../entities/User";
+import { IStudent } from "./interfaces/student";
 
-
-const main = async(name: string, email: string, cpf: string, age: number) => {
-
-    const exists = await prismaStudentsRespository.existsByEmail(email);
+const main = async(data: IStudent): Promise<User> => {
+    const user = new User(data);
+    
+    const exists = await prismaStudentsRespository.existsByEmail(user.email);
 
     if(exists) {
-        throw new Error("there is already a student with this email");
-    } 
+        throw new Error("This email is already being used by another student");
+    }
 
-    const student_created = await prismaStudentsRespository.store(name, email, cpf, age)
+    const user_created = await prismaStudentsRespository.store(user);
 
-    return student_created
+    return user_created;
 };
 
 export default main;

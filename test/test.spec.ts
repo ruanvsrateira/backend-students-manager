@@ -5,8 +5,6 @@
 import app from '../src/app';
 import request from "supertest";
 
-import getAllStudentsService from '../src/services/getAllStudentsService';
-
 
 describe("Create Student Controller", () => {
   it("Should be able to create a new student", async () => {
@@ -35,7 +33,7 @@ describe("Create Student Controller", () => {
       cpf: "22-22-22-22"
     });
 
-    expect(response.body.error).toEqual("there is already a student with this email")
+    expect(response.body.error).toEqual("This email is already being used by another student")
     
   });
 });
@@ -106,3 +104,6 @@ describe("Edit Student Service", () => {
 });
 
 
+afterAll((done) => {
+  done();
+})
