@@ -1,4 +1,4 @@
-import prismaClient from "../database/PrismaClient";
+import prismaClient from "../database/client/PrismaClient";
 import { setRedis } from "../config/redisConfig";
 
 

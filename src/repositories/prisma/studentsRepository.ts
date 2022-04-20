@@ -1,5 +1,5 @@
 import { Student } from "@prisma/client";
-import prismaClient from "../../database/PrismaClient";
+import prismaClient from "../../database/client/PrismaClient";
 
 import { User } from "../../entities/User";
 import { IStudentRepository } from "./IStudentRepository";
