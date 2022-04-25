@@ -62,6 +62,14 @@ class prismaStudentsRepository implements IStudentRepository{
 
         return student_edited;
     };
+
+    async getStudentById(id: number): Promise<Student | null> {
+        const student = await prismaClient.student.findUnique({
+            where: { id }
+        });
+
+        return student;
+    }
 }
 
 export default new prismaStudentsRepository();
