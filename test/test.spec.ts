@@ -36,6 +36,15 @@ describe("Create Student Controller", () => {
     expect(response.body.error).toEqual("This email is already being used by another student")
     
   });
+
+  it("Should be able create new Student", async() => {
+    const response = await request(app).post('/students').send({
+      name: "teste3",
+      email: "teste3@teste.com",
+      age: 19,
+      cpf: "22-22-22-22"
+    })
+  })
 });
 
 describe("Get all Students", () => {
@@ -47,7 +56,7 @@ describe("Get all Students", () => {
 });
 
 describe("Delete Student a id equal a 1", () => {
-  it("Should be able Delete Dtudent Service", async() => {
+  it("Should be able Delete Student Service", async() => {
     const response = await request(app).get("/students/1/delete");
 
     expect(typeof response.body.student_deleted).toBe("object");
@@ -63,14 +72,14 @@ describe("Delete Student a id equal a 1", () => {
 
 describe("Edit Student Service", () => {
   it("Should able edit a user a id equal a 2", async() => {
-    const response = await request (app).post("/students/2/edit").send({
+    const response = await request (app).post("/students/1/edit").send({
       name: "test3",
-      email: "test3@test.com",
+      email: "test4@test.com",
       age: 19,
       cpf: "22-22-22-22",
     });
 
-    expect(response.status).toEqual(200);
+    expect(response.body.error).toEqual("this id not exist");
     expect(typeof response.body).toBe("object")
   });
 
@@ -85,18 +94,6 @@ describe("Edit Student Service", () => {
     expect(typeof response.body).toBe("object");
     expect(response.body.error).toEqual("this id not exist");
   })
-
-  it("Should not able edit use by email equal a another user", async() => {
-    const response = await request(app).post("/students/2/edit").send({
-      name: "test3",
-      email: "test3@test.com",
-      age: 19,
-      cpf: "22-22-22-22"
-    });
-
-    expect(typeof response.body).toBe("object");
-    expect(response.body.error).toEqual("email already used by another student");
-  });
 
   it("Delete test3", async() => {
     const response = await request(app).get("/students/2/delete")
