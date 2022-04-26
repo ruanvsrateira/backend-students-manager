@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./dist/server.js",
     "test": "jest --forceExit",
     "initjest": "jest --init",
     "prismainit": "prisma init",
